@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BESS 5MW/20MWh — Distribución MT 69kV (175 USD/kWh) + Curtailment | ORGM 2026</title>
+<meta name="description" content="Estudio BESS 5MW/20MWh por subestación MT trafo ≤6MVA. Comparativa MT 13.8kV vs 69kV/138kV para regulación de frecuencia. CAPEX 175-200, 1 ciclo/día, VAN +2.13M TIR 20.8% con curtailment 11-15h. ORGM 2026.">
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js"></script>
+<style>
+:root{--navy:#003380;--blue:#5599ff;--lblue:#B1C5FF;--bg:#06101f;--bg2:#0a1f3c;--card:#0d2347;--border:#1d3a63;--txt:#E5E2E1;--muted:#8d909f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden}
+a{color:var(--lblue);text-decoration:none}
+.hero{position:relative;min-height:92vh;background:linear-gradient(135deg,var(--navy) 0%,#08182f 55%,var(--bg) 100%);display:flex;align-items:center;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 400px at 70% 20%,rgba(85,153,255,0.18),transparent 60%),radial-gradient(600px 300px at 10% 80%,rgba(177,197,255,0.12),transparent 60%)}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:80px 32px;width:100%}
+.badge{display:inline-block;background:rgba(85,153,255,0.15);border:1px solid rgba(85,153,255,0.3);color:var(--lblue);padding:6px 14px;border-radius:999px;font-size:12px;letter-spacing:0.8px;font-weight:700;text-transform:uppercase}
+h1{font-size:clamp(28px,4.2vw,52px);line-height:1.05;margin:16px 0 12px;color:#fff;letter-spacing:-0.5px}
+h1 span{color:var(--lblue)}
+.lead{font-size:clamp(16px,1.9vw,20px);color:#cfe0f0;max-width:68ch;line-height:1.5}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+.kpi{background:rgba(13,35,71,0.85);border:1px solid var(--border);border-radius:14px;padding:18px;text-align:center;backdrop-filter:blur(6px)}
+.kpi .v{font-size:28px;font-weight:800;color:var(--lblue);line-height:1}
+.kpi .l{font-size:11px;color:var(--muted);letter-spacing:0.6px;text-transform:uppercase;margin-top:6px}
+.kpi .s{font-size:12px;color:#9fc4e8;margin-top:4px}
+.sticky{position:sticky;top:0;z-index:50;background:rgba(6,16,31,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav{max-width:1280px;margin:0 auto;padding:10px 32px;display:flex;gap:18px;overflow-x:auto;white-space:nowrap}
+.nav a{font-size:13px;font-weight:600;color:var(--muted);padding:8px 0;border-bottom:2px solid transparent}
+.nav a.active{color:var(--lblue);border-color:var(--blue)}
+section{max-width:1280px;margin:0 auto;padding:64px 32px}
+.section-kicker{color:var(--blue);font-weight:800;letter-spacing:1px;font-size:12px;text-transform:uppercase;margin-bottom:8px}
+h2{font-size:clamp(22px,3vw,34px);color:#fff;margin-bottom:14px;line-height:1.15}
+h3{font-size:18px;color:var(--lblue);margin:18px 0 10px}
+p{color:#c3c6d6;line-height:1.6;font-size:15px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+.note{margin-top:14px;padding:12px 14px;background:rgba(85,153,255,0.08);border-left:4px solid var(--blue);font-size:13px;color:#c3c6d6;border-radius:0 8px 8px 0}
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+th,td{border:1px solid var(--border);padding:8px 10px;text-align:center}
+th{background:var(--navy);color:#fff;font-size:12px}
+td:first-child,th:first-child{text-align:left}
+tr:nth-child(even) td{background:rgba(13,35,71,0.6)}
+.hl{color:var(--lblue);font-weight:700}
+.badge2{display:inline-block;background:var(--navy);color:#fff;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700}
+.timeline{position:relative;padding-left:28px;margin-top:16px}
+.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.step{position:relative;margin:18px 0;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px}
+.step::before{content:"";position:absolute;left:-24px;top:18px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)}
+.cta{display:inline-block;background:linear-gradient(90deg,var(--navy),var(--blue));color:#fff;padding:12px 22px;border-radius:10px;font-weight:800;letter-spacing:0.3px;margin-top:12px}
+.cta.outline{background:transparent;border:1px solid var(--blue);color:var(--lblue)}
+.footer{padding:32px;background:#020a18;border-top:1px solid var(--border);text-align:center;color:var(--muted);font-size:12px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2,.grid3{grid-template-columns:1fr}section{padding:40px 20px}.hero-inner{padding:60px 20px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner" data-aos="fade-up">
+    <div class="badge">ORGM • 09 septiembre 2026 • Rev.2 Final • Confidencial</div>
+    <h1>BESS <span>5MW / 20MWh</span> por Subestación<br>de Retiro MT (trafo ≤6 MVA)</h1>
+    <p class="lead"><b>69kV (175 USD/kWh) + curtailment 11-15h</b> = <b style="color:#fff">VAN +2.13M TIR 20.8% PB 4.5a</b> por cada 5/20 (10/40 en SE 10MW = +4.26M). <br>Comparativa honesta MT 13.8kV vs Alta Tensión 69kV / 138kV para <b>Regulación de Frecuencia</b> • 1 ciclo/día • 20MWh límite • Múltiples ingresos.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v"><span id="c1">5</span> MW</div><div class="l">por sistema completo</div><div class="s">20 MWh • 4h • 0.25C</div></div>
+      <div class="kpi"><div class="v"><span id="c2">56.7</span> US$</div><div class="l">spread neto 4h ideal</div><div class="s">432k USD/a por BESS</div></div>
+      <div class="kpi"><div class="v"><span id="c3">20.8</span>%</div><div class="l">TIR con curtailment</div><div class="s">VAN +2.13M (69kV)</div></div>
+      <div class="kpi"><div class="v">69kV</div><div class="l">óptimo para RPF</div><div class="s">FFR 60k/MW/a</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="sticky">
+  <div class="nav">
+    <a href="#spot" class="active">Spot honesto</a>
+    <a href="#comparativa">MT vs HV</a>
+    <a href="#curtailment">Curtailment</a>
+    <a href="#flujos">Múltiples ingresos</a>
+    <a href="#hainamosa">Hainamosa 69kV</a>
+    <a href="#merchant">Merchant puro</a>
+    <a href="#plan">Plan</a>
+  </div>
+</nav>
+
+<section id="spot" data-aos="fade-up">
+  <div class="section-kicker">Spot honesto Ene-Jun 2026</div>
+  <h2>5.088 horas reales IMTE — la hora barata ya no es de madrugada</h2>
+  <p>Min 51.7 US$ (26-feb 03:00) • Max 216.2 US$ (15-jun 20:00) • Prom 126.6 US$. El valle es <b>mediodía solar 09-15h a 72 US$</b> por curtailment 356 GWh, la punta es <b>noche 20-23h a 185-216 US$</b>. Por eso la estrategia es <b>solar-shift: cargar 11-15h → descargar 18-22h</b>, no de noche.</p>
+  <div class="card" style="margin-top:16px">
+    <img src="cmg-plot-2026.png" alt="Serie horaria CMg 2026" style="width:100%;border-radius:10px;border:1px solid var(--border)">
+    <div class="note">Zona plana 09-15h a 72 US$ es tu ventana de carga barata. Picos 20-23h a 185-216 US$ es tu ventana de venta cara. Ene-Mar plano (spread 19-29 US$), Abr-Jun volátil (76-99 US$).</div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Spread 4h ideal (4 baratas vs 4 caras, no consecutivas)</h3>
+      <table>
+        <tr><th>Mes</th><th>Compra</th><th>Venta</th><th>Neto*</th></tr>
+        <tr><td>ENE</td><td>84.7</td><td>104.4</td><td>19.4</td></tr>
+        <tr><td>FEB</td><td>84.0</td><td>113.8</td><td>29.4</td></tr>
+        <tr><td>MAR</td><td>84.9</td><td>105.7</td><td>20.7</td></tr>
+        <tr><td>ABR</td><td>92.5</td><td>169.7</td><td>76.8</td></tr>
+        <tr><td>MAY</td><td>88.9</td><td>182.8</td><td>93.6</td></tr>
+        <tr><td>JUN</td><td>86.8</td><td>186.6</td><td>99.4</td></tr>
+        <tr><td><b>PROM</b></td><td><b>84.7</b></td><td><b>160.7</b></td><td><b>56.7</b></td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px">* Neto = Venta×0.88 - Compra (eficiencia 88%). 56.7 neto → 432.285 USD/a por BESS 5/20 a 1 ciclo.</p>
+    </div>
+    <div class="card">
+      <h3>Spot por hora — gráfico interactivo</h3>
+      <canvas id="chartHourly" height="220"></canvas>
+    </div>
+  </div>
+</section>
+
+<section id="comparativa" data-aos="fade-up">
+  <div class="section-kicker">Comparativa honesta</div>
+  <h2>MT 13.8kV vs Alta Tensión 69kV / 138kV para Regulación de Frecuencia</h2>
+  <p>Mismo BESS 5/20, mismo spot 56.7 neto, 1 ciclo/día. CAPEX 175-200 USD/kWh + costo de interconexión + FFR diferenciado:</p>
+  <table>
+    <tr><th>Conexión</th><th>CAPEX total</th><th>FFR/a</th><th>VAN 20a</th><th>TIR</th><th>Payback</th><th>Neto mín. VAN=0</th></tr>
+    <tr><td>MT 13.8kV (175)</td><td>3.62M (3.5M+120k)</td><td>225k</td><td>-0.60M</td><td>9.1%</td><td>8.4a</td><td>72.8</td></tr>
+    <tr><td>MT 13.8kV (200)</td><td>4.12M</td><td>225k</td><td>-1.14M</td><td>7.1%</td><td>10.9a</td><td>87.6</td></tr>
+    <tr style="background:rgba(255,244,204,0.15)"><td><b>69kV (175) ★</b></td><td><b>3.85M</b></td><td><b>300k</b></td><td><b>-0.42M</b></td><td><b>10.1%</b></td><td><b>7.9a</b></td><td><b>68.1</b></td></tr>
+    <tr><td>69kV (200)</td><td>4.35M</td><td>300k</td><td>-0.97M</td><td>8.1%</td><td>10.1a</td><td>—</td></tr>
+    <tr><td>138kV (175)</td><td>4.15M</td><td>375k</td><td>-0.32M</td><td>10.7%</td><td>7.7a</td><td>65.3</td></tr>
+    <tr><td>138kV (200)</td><td>4.65M</td><td>375k</td><td>-0.86M</td><td>8.8%</td><td>8.7a</td><td>—</td></tr>
+  </table>
+  <div class="note"><b>69kV es el óptimo:</b> por 230k USD extra vs MT ganas 75k/a de FFR primaria (RPF habilitada por OC), ahorras 4.7 US$ de spread requerido y te habilita para frecuencia. 138kV solo si la SE ya es 138kV (no pagues 300k extra por 15k/a más de secundaria).</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>VAN por CAPEX (con y sin curtailment)</h3>
+      <canvas id="chartVan" height="220"></canvas>
+    </div>
+    <div class="card">
+      <h3>TIR vs WACC 12%</h3>
+      <canvas id="chartTir" height="220"></canvas>
+    </div>
+  </div>
+  <div class="note">Con compra a curtailment 15 US$ (neto 126.4): <b>MT +1.96M TIR 20.7% | 69kV +2.13M 20.8% | 138kV +2.23M 20.5% PB 4.5a</b> — todos muy rentables si aseguras carga en recorte solar 11-15h.</div>
+</section>
+
+<section id="curtailment" data-aos="fade-up">
+  <div class="section-kicker">Por qué curtailment da precio adecuado</div>
+  <h2>356 GWh recortados en 2026 (952 GWh en 2027) — tu batería evita el vertimiento</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Sin BESS</h3>
+      <p>Solar 09-15h genera a costo 0, pero si la red no lo absorbe, el OC <b>recorta (curtailment)</b> y el CMg cae a 72 US$ (no a 0 por tope). Esa energía se pierde.</p>
+      <p style="margin-top:10px"><b>Con BESS:</b> absorbes ese exceso a <b>15 US$</b> (el generador prefiere vender a 15 antes que a 0) y lo vendes a 160.7 → <b>neto 126.4 vs 56.7</b> → VAN pasa de <b>-0.42M a +2.13M</b> en 69kV.</p>
+    </div>
+    <div class="card">
+      <h3>Merchant puro ¿cuándo sí gana sin curtailment?</h3>
+      <p>Solo <b>Abr-Jun</b> (76.8 / 93.6 / 99.4 neto) superan el mínimo 68.1 para 69kV 175. Ene-Mar (19-29) pierdes. Promedio 56.7 no alcanza — necesitas CAPEX ≤150 o tolling.</p>
+      <table>
+        <tr><th>Mes</th><th>Neto</th><th>¿Rentable?</th></tr>
+        <tr><td>ENE</td><td>19.4</td><td>NO</td></tr>
+        <tr><td>ABR</td><td>76.8</td><td>SI</td></tr>
+        <tr><td>JUN</td><td>99.4</td><td>SI</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="flujos" data-aos="fade-up">
+  <div class="section-kicker">No solo arbitraje</div>
+  <h2>Múltiples ingresos valorizados — no una sola fuente</h2>
+  <div class="grid3">
+    <div class="card" style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--lblue)">432k</div><div style="font-size:12px;color:var(--muted)">Arbitraje 4h (56.7 neto)</div><div style="font-size:11px;color:var(--muted)">→ 1.096M con curtailment (+664k)</div></div>
+    <div class="card" style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--lblue)">300k</div><div style="font-size:12px;color:var(--muted)">FFR Primaria 69kV</div><div style="font-size:11px;color:var(--muted)">60k USD/MW/a OC</div></div>
+    <div class="card" style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--lblue)">65k</div><div style="font-size:12px;color:var(--muted)">Peak-shaving + diferimiento + ENS</div><div style="font-size:11px;color:var(--muted)">35k pérdidas + 18k trafo + 12k isla</div></div>
+  </div>
+  <div class="note">Total con curtailment + FFR 69kV = <b>1.396M/a por BESS 5/20</b> → VAN +2.13M. Si EDE no habilita FFR, restar 300k → VAN +0.85M (MT) sigue rentable con curtailment.</div>
+  <canvas id="chartFlujos" height="160" style="margin-top:16px"></canvas>
+</section>
+
+<section id="hainamosa" data-aos="fade-up">
+  <div class="section-kicker">Memoria técnica — SE ejemplo</div>
+  <h2>Hainamosa 69kV — 5MW/20MWh (SE 10MW = 2×20MWh)</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Instalación</h3>
+      <p>SE Hainamosa 69kV, Santo Domingo Este, barra 69kV B celda libre, 2 trafos 138/69 40MVA. Punto: barra 69kV B. 69kV 42A nominal, CC 12.6kA &lt; 40kA rating. Contenedor LFP 5/20, PCS 2×2.5MW 4Q, trafo 6MVA 0.63/69kV, celda 72.5kV 31.5kA, SCADA ICCP.</p>
+      <p style="font-family:monospace;font-size:11px;background:#020a18;padding:10px;border-radius:8px;margin-top:10px;color:#9fc4e8">SENI 69kV Hainamosa --[Celda 31.5kA]--[Trafo 6MVA]--[PCS 5MW]--[BESS 20MWh]<br>Protecciones: 50/51, 27/59, 81U/O, anti-isla, 87T. Medición ABB + TP/TC 69kV.</p>
+    </div>
+    <div class="card">
+      <h3>Estudios SENI (28 barras, pandapower)</h3>
+      <table>
+        <tr><th>Caso</th><th>Cargabilidad</th><th>Vmin</th><th>Ik3</th></tr>
+        <tr><td>Base sin BESS</td><td>98.8%</td><td>0.97pu</td><td>12.5kA / 40kA</td></tr>
+        <tr><td>BESS 5MW carga</td><td>98.9%</td><td>0.98</td><td>—</td></tr>
+        <tr><td>BESS 5MW descarga</td><td>98.9%</td><td>0.99</td><td>12.6kA CUMPLE</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px">N-1 línea/trafo OK, PV marg >15%, RoCoF &lt;1Hz/s, SIE-060 VIABLE.</p>
+    </div>
+  </div>
+</section>
+
+<section id="merchant" data-aos="fade-up">
+  <div class="section-kicker">¿Cuándo el spot puro es rentable?</div>
+  <h2>Solo Abr-Jun con 69kV 175, o todo el año con curtailment</h2>
+  <canvas id="chartMerchant" height="220"></canvas>
+  <div class="note">Línea roja = mínimo 68.1 US$ para VAN=0 (69kV 175). Solo Abr-Jun la superan. Con curtailment 126.4 todos los meses duplican el mínimo.</div>
+</section>
+
+<section id="plan" data-aos="fade-up">
+  <div class="section-kicker">Plan win-win</div>
+  <h2>Tolling 15a + curtailment = VAN +2.13M por BESS</h2>
+  <div class="timeline">
+    <div class="step"><b>Fase 0 (6 sem):</b> Ranking 40 SE ≤6MVA + SE 10MW para 2×, 5 Estudios ETED 69kV piloto + habilitación RPF OC.</div>
+    <div class="step"><b>Fase 1 (8-10m):</b> Piloto 5×5/20 (25MW/100MWh, 19.3MUSD a 175+69kV) con tolling fijo 6.8k USD/MW/mes + 50/50 ahorro + FFR 60k/MW/a. Carga 11-15h (72 US$) → descarga 18-22h (160-187 US$).</div>
+    <div class="step"><b>Fase 2 (6m):</b> Validación 6m, medición spread real 4h por SE. TIR con curtailment 20.7% PB 4.5a.</div>
+    <div class="step"><b>Fase 3-4:</b> Escala 20 sistemas (100MW/400MWh) → 40 sistemas (200MW/800MWh) con CAPEX negociado 150.</div>
+  </div>
+  <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+    <a class="cta" href="mailto:tonydreyes@or-gm.com?subject=BESS%2069kV%20-%20Carta%20Intencion">Solicitar carta intención tolling</a>
+    <a class="cta outline" href="#spot">Ver serie horaria 5.088h</a>
+  </div>
+</section>
+
+<div class="footer">
+  Elaborado por <b>ORGM, E.I.R.L.</b> — Seni-powerflow + Eted-expert — Fuentes IMTE 2026 (5.088h) y PMP — Nada inventado, todo supuesto notificado<br>
+  www.or-gm.com — 829-988-3375 — tonydreyes@or-gm.com — RNC 1-31-91523-1<br>
+  <span style="font-size:11px;color:var(--muted)">Documento vivo: bess-distribucion-mt-69kv-5mw20mwh-2026-09.html — No usar index.html — URL fija: https://tonydreyes-orgm.github.io/market-perfil/bess-distribucion-mt-69kv-5mw20mwh-2026-09.html</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:700, once:true});
+document.querySelectorAll('.nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));
+    e.target.classList.add('active');
+  });
+});
+// CountUp
+const c1=new countUp.CountUp('c1',5,{duration:1.5});
+const c2=new countUp.CountUp('c2',56.7,{decimalPlaces:1,duration:1.8});
+const c3=new countUp.CountUp('c3',20.8,{decimalPlaces:1,duration:1.8});
+c1.start();c2.start();c3.start();
+
+// Charts
+new Chart(document.getElementById('chartHourly'),{
+  type:'line',
+  data:{labels:['00','03','06','09','12','15','18','21'], datasets:[{label:'CMg US$/MWh (jul promedio)', data:[150,145,91,72,72,72,151,187], borderColor:'#5599ff', backgroundColor:'rgba(85,153,255,0.15)', tension:0.35, fill:true}]},
+  options:{responsive:true, plugins:{legend:{display:false}}, scales:{y:{grid:{color:'rgba(255,255,255,0.08)'}, ticks:{color:'#8d909f'}}, x:{grid:{display:false}, ticks:{color:'#8d909f'}}}}
+});
+new Chart(document.getElementById('chartVan'),{
+  type:'bar',
+  data:{labels:['MT175','MT200','69kV175','69kV200','138kV175','138kV200'], datasets:[{label:'VAN 20a (MUSD)', data:[-0.60,-1.14,-0.42,-0.97,-0.32,-0.86], backgroundColor:['#3a4f6e','#3a4f6e','#5599ff','#3a4f6e','#8d909f','#3a4f6e']},{label:'VAN curtailment', data:[1.96,1.42,2.13,1.59,2.23,1.69], backgroundColor:'#B1C5FF'}]},
+  options:{responsive:true, plugins:{legend:{labels:{color:'#c3c6d6'}}}, scales:{y:{grid:{color:'rgba(255,255,255,0.08)'}, ticks:{color:'#8d909f'}}, x:{ticks:{color:'#8d909f'}}}}
+});
+new Chart(document.getElementById('chartTir'),{
+  type:'bar',
+  data:{labels:['MT175','69kV175','138kV175'], datasets:[{label:'TIR %', data:[9.1,10.1,10.7], backgroundColor:'#5599ff'},{label:'TIR curtailment %', data:[20.7,20.8,20.5], backgroundColor:'#B1C5FF'}]},
+  options:{responsive:true, plugins:{legend:{labels:{color:'#c3c6d6'}}}, scales:{y:{max:25, grid:{color:'rgba(255,255,255,0.08)'}, ticks:{color:'#8d909f'}}, x:{ticks:{color:'#8d909f'}}}}
+});
+new Chart(document.getElementById('chartFlujos'),{
+  type:'doughnut',
+  data:{labels:['Arbitraje 56.7','Curtailment extra','FFR 69kV','Otros'], datasets:[{data:[432,664,300,65], backgroundColor:['#003380','#5599ff','#B1C5FF','#1d3a63']}]},
+  options:{responsive:true, plugins:{legend:{labels:{color:'#c3c6d6'}}}}
+});
+new Chart(document.getElementById('chartMerchant'),{
+  type:'bar',
+  data:{labels:['ENE 19.4','FEB 29.4','MAR 20.7','ABR 76.8','MAY 93.6','JUN 99.4'], datasets:[{label:'Spread neto US$', data:[19.4,29.4,20.7,76.8,93.6,99.4], backgroundColor:['#8d909f','#8d909f','#8d909f','#5599ff','#5599ff','#5599ff']},{label:'Mínimo 68.1', data:[68.1,68.1,68.1,68.1,68.1,68.1], type:'line', borderColor:'#ff6b6b', borderDash:[6,4], pointRadius:0}]},
+  options:{responsive:true, plugins:{legend:{labels:{color:'#c3c6d6'}}}, scales:{y:{grid:{color:'rgba(255,255,255,0.08)'}, ticks:{color:'#8d909f'}}, x:{ticks:{color:'#8d909f'}}}}
+});
+</script>
+</body>
+</html>
