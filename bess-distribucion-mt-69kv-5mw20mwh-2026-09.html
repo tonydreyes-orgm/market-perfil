@@ -119,15 +119,15 @@ tr:nth-child(even) td{background:rgba(13,35,71,0.6)}
   <h2>MT 13.8kV vs Alta Tensión 69kV / 138kV para Regulación de Frecuencia</h2>
   <p>Mismo BESS 5/20, mismo spot 56.7 neto, 1 ciclo/día. CAPEX 175-200 USD/kWh + costo de interconexión + FFR diferenciado:</p>
   <table>
-    <tr><th>Conexión</th><th>CAPEX total</th><th>FFR/a</th><th>VAN 20a</th><th>TIR</th><th>Payback</th><th>Neto mín. VAN=0</th></tr>
-    <tr><td>MT 13.8kV (175)</td><td>3.62M (3.5M+120k)</td><td>225k</td><td>-0.60M</td><td>9.1%</td><td>8.4a</td><td>72.8</td></tr>
-    <tr><td>MT 13.8kV (200)</td><td>4.12M</td><td>225k</td><td>-1.14M</td><td>7.1%</td><td>10.9a</td><td>87.6</td></tr>
-    <tr style="background:rgba(255,244,204,0.15)"><td><b>69kV (175) ★</b></td><td><b>3.85M</b></td><td><b>300k</b></td><td><b>-0.42M</b></td><td><b>10.1%</b></td><td><b>7.9a</b></td><td><b>68.1</b></td></tr>
-    <tr><td>69kV (200)</td><td>4.35M</td><td>300k</td><td>-0.97M</td><td>8.1%</td><td>10.1a</td><td>—</td></tr>
-    <tr><td>138kV (175)</td><td>4.15M</td><td>375k</td><td>-0.32M</td><td>10.7%</td><td>7.7a</td><td>65.3</td></tr>
-    <tr><td>138kV (200)</td><td>4.65M</td><td>375k</td><td>-0.86M</td><td>8.8%</td><td>8.7a</td><td>—</td></tr>
+    <tr><th>Conexión</th><th>CAPEX total</th><th>FFR+extras/a</th><th>VAN 20a*</th><th>TIR*</th><th>Payback</th><th>Neto mín. VAN=0</th></tr>
+    <tr><td>MT 13.8kV (175)</td><td>3.62M (3.5M+120k)</td><td>368k (225+143 extras)</td><td>+0.18M</td><td>12.8%</td><td>6.8a</td><td>72.8→54.2 con extras</td></tr>
+    <tr><td>MT 13.8kV (200)</td><td>4.12M</td><td>368k</td><td>-0.35M</td><td>10.4%</td><td>7.9a</td><td>87.6</td></tr>
+    <tr style="background:rgba(255,244,204,0.15)"><td><b>69kV (175) ★</b></td><td><b>3.85M</b></td><td><b>443k (300+143)</b></td><td><b>+0.37M</b></td><td><b>13.6%</b></td><td><b>6.5a</b></td><td><b>68.1→49.8 con extras</b></td></tr>
+    <tr><td>69kV (200)</td><td>4.35M</td><td>443k</td><td>-0.18M</td><td>11.2%</td><td>7.2a</td><td>—</td></tr>
+    <tr><td>138kV (175)</td><td>4.15M</td><td>518k (375+143)</td><td>+0.58M</td><td>14.2%</td><td>6.2a</td><td>65.3→46.1 con extras</td></tr>
+    <tr><td>138kV (200)</td><td>4.65M</td><td>518k</td><td>+0.04M</td><td>12.1%</td><td>6.9a</td><td>—</td></tr>
   </table>
-  <div class="note"><b>69kV es el óptimo:</b> por 230k USD extra vs MT ganas 75k/a de FFR primaria (RPF habilitada por OC), ahorras 4.7 US$ de spread requerido y te habilita para frecuencia. 138kV solo si la SE ya es 138kV (no pagues 300k extra por 15k/a más de secundaria).</div>
+  <div class="note"><b>69kV es el óptimo con TODOS los ingresos:</b> por 230k USD extra vs MT ganas 75k/a de FFR + 143k/a extras (pérdidas+CO2+diferimiento+ENS) → con spot 56.7 neto ya es <b>VAN +0.37M (13.6%) vs MT +0.18M</b> sin necesitar curtailment. 138kV (+0.58M con todos) solo si SE ya es 138kV.<br><span style="font-size:11px;color:var(--muted)">*VAN con TODOS los ingresos: arbitraje 432k + FFR + 40k pérdidas + 18k diferimiento + 12k ENS + 73k CO2 = 143k extras. Sin extras era -0.42M.</span></div>
   <div class="grid2">
     <div class="card">
       <h3>VAN por CAPEX (con y sin curtailment)</h3>
