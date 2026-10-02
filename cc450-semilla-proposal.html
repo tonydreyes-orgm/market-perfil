@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital Semilla US$1.3 M · CC450 MW Las Charcas · ORGM</title>
+<meta name="description" content="Propuesta de capital semilla para la central de ciclo combinado CC450 MW Las Charcas, Azua, República Dominicana. US$1.3 millones que desbloquean un proyecto de US$601 millones.">
+<!--
+  IDENTIDAD ORGM (misma base que bess-proposal.html / andinos-proposal.html)
+  --orgm-navy #003380 · --orgm-blue #5599ff · --orgm-lblue #B1C5FF
+-->
+<style>
+:root{
+  --orgm-navy:#003380;
+  --orgm-blue:#5599ff;
+  --orgm-lblue:#B1C5FF;
+  --gold:#C9A96A;
+  --gold-d:#A47A2F;
+  --green:#4CAF7D;
+  --red:#E07A6A;
+  --bg:#06101f;
+  --bg2:#0a1f3c;
+  --card:#0d2347;
+  --border:#1d3a63;
+  --txt:#E5E2E1;
+  --body:#C3C6D6;
+  --muted:#8d909f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--txt);background:var(--bg);overflow:hidden}
+.logo{height:32px;width:auto;display:block}
+#topbar{position:fixed;top:16px;left:8vw;z-index:60}
+#progress{position:fixed;top:0;left:0;height:4px;background:var(--orgm-blue);width:0;z-index:50;transition:width .3s}
+#deck{position:relative;width:100vw;height:100vh;height:100dvh}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;background:linear-gradient(160deg,var(--bg2) 0%,var(--bg) 100%);padding:8vh 8vw 8vh;overflow:hidden;color:var(--txt)}
+.slide.active{display:flex;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.band{position:absolute;top:0;left:0;right:0;height:10px;background:linear-gradient(90deg,var(--orgm-navy),var(--orgm-blue))}
+.kicker{color:var(--orgm-blue);font-weight:700;letter-spacing:1px;font-size:14px;text-transform:uppercase;margin-bottom:10px}
+h1{font-size:clamp(26px,4.4vw,52px);line-height:1.1;color:#fff;margin-bottom:18px}
+h2{font-size:clamp(22px,3.2vw,38px);color:var(--orgm-lblue);margin-bottom:14px;line-height:1.15}
+h3{font-size:clamp(15px,1.9vw,21px);color:#fff;margin-bottom:8px}
+p,li{font-size:clamp(14px,1.75vw,19px);line-height:1.45;color:var(--body)}
+ul{margin:8px 0 0 22px}
+li{margin:6px 0}
+.lead{font-size:clamp(16px,2.2vw,25px);color:var(--txt);max-width:62ch}
+.hl{color:var(--orgm-lblue);font-weight:700}
+.gold{color:var(--gold);font-weight:700}
+.bignum{font-size:clamp(30px,5vw,64px);color:var(--orgm-lblue);font-weight:800;line-height:1}
+.cols{display:flex;gap:32px;flex-wrap:wrap;margin-top:16px}
+.col{flex:1;min-width:250px}
+table{border-collapse:collapse;margin-top:12px;font-size:clamp(11px,1.45vw,15px);width:100%}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:right;color:var(--txt)}
+th{background:var(--orgm-navy);color:#fff}
+td:first-child,th:first-child{text-align:left}
+tr:nth-child(even) td{background:var(--card)}
+tr.hlrow td{background:rgba(201,169,106,.16);color:#fff;font-weight:700}
+.note{margin-top:14px;padding:12px 16px;background:rgba(85,153,255,.10);border-left:5px solid var(--orgm-blue);font-size:clamp(12px,1.6vw,17px);color:var(--body)}
+.note.gold{background:rgba(201,169,106,.12);border-left-color:var(--gold)}
+.note.red{background:rgba(224,122,106,.12);border-left-color:var(--red)}
+.note.green{background:rgba(76,175,125,.12);border-left-color:var(--green)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-top:12px}
+.card.win{border-color:var(--gold);background:rgba(201,169,106,.10)}
+.card.alt{border-color:var(--border)}
+.card.alt .t{color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.kpi.win{border-color:var(--gold);background:rgba(201,169,106,.10)}
+.kpi .v{font-size:clamp(20px,2.7vw,34px);font-weight:800;color:var(--orgm-blue)}
+.kpi.win .v{color:var(--gold)}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:4px}
+.fig{margin-top:14px;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.fig img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;border:1px solid var(--border);background:#fff}
+.figcaption{text-align:center;font-size:12px;color:var(--muted);margin-top:6px}
+.foot{position:absolute;bottom:18px;left:8vw;font-size:12px;color:var(--muted)}
+.tag{display:inline-block;background:var(--orgm-navy);color:#fff;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:700;margin-right:6px}
+.tag.goldtag{background:var(--gold-d)}
+.tag.green{background:#2f6b4f}
+.rail{position:absolute;left:8vw;right:8vw;bottom:8vh;height:6px;background:var(--card);border-radius:4px;overflow:hidden}
+.rail .fill{height:100%;background:linear-gradient(90deg,var(--orgm-navy),var(--orgm-blue))}
+#nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:40}
+#nav button{width:11px;height:11px;border-radius:50%;border:none;background:#3a4f6e;cursor:pointer;padding:0}
+#nav button.on{background:var(--orgm-blue);transform:scale(1.25)}
+#counter{position:fixed;bottom:16px;right:8vw;z-index:40;color:#7e93b3;font-size:13px}
+#hint{position:fixed;bottom:16px;left:8vw;z-index:40;color:#7e93b3;font-size:12px}
+.title-slide{background:linear-gradient(150deg,var(--orgm-navy),#08182f);color:#fff;justify-content:center}
+.title-slide h1{color:#fff}
+.title-slide .lead{color:#cfe0f0}
+.title-slide .band{background:var(--orgm-blue)}
+/* timelines */
+.tl{display:flex;gap:0;margin-top:16px;align-items:stretch}
+.tl .step{flex:1;padding:10px 12px;border:1px solid var(--border);border-left:none;background:var(--card);font-size:clamp(11px,1.3vw,14px);color:var(--body)}
+.tl .step:first-child{border-left:1px solid var(--border);border-radius:8px 0 0 8px}
+.tl .step:last-child{border-radius:0 8px 8px 0}
+.tl .step .y{display:block;font-weight:800;color:#fff;font-size:clamp(14px,1.7vw,19px)}
+.tl .step.done{background:rgba(76,175,125,.16);border-color:var(--green)}
+.tl .step.seed{background:rgba(201,169,106,.18);border-color:var(--gold)}
+.tl .step.slow{background:rgba(224,122,106,.14);border-color:var(--red)}
+@media (max-width:768px){
+  #topbar{left:5vw;top:12px}
+  .logo{height:26px}
+  .slide{padding:12vh 5vw 11vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .grid2,.grid3,.grid4{grid-template-columns:1fr;gap:10px;margin-top:12px}
+  .cols{flex-direction:column;gap:14px}
+  .col{min-width:0}
+  h1{font-size:clamp(24px,7vw,36px)}
+  h2{font-size:clamp(20px,5.4vw,28px);margin-bottom:10px}
+  p,li{font-size:clamp(13px,4vw,17px)}
+  .kicker{font-size:12px}
+  .card{padding:13px;margin-top:10px}
+  .kpi{padding:11px}
+  table{font-size:clamp(10px,2.9vw,13px);display:block;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+  th,td{padding:5px 7px}
+  .note{font-size:clamp(11px,3.4vw,14px);padding:10px 12px}
+  .foot{font-size:10px}
+  #hint{display:none}
+  #nav button{width:9px;height:9px}
+  #counter{right:5vw;font-size:11px}
+  .tl{flex-direction:column}
+  .tl .step{border-left:1px solid var(--border);border-radius:0}
+  .tl .step:first-child{border-radius:8px 8px 0 0}
+  .tl .step:last-child{border-radius:0 0 8px 8px}
+  .fig{min-height:220px}
+}
+@media (max-width:768px) and (orientation:landscape){
+  .slide{padding:11vh 5vw 9vh;overflow-y:auto}
+}
+@media print{
+  body{overflow:visible;background:#fff}
+  .slide{position:relative;display:flex!important;page-break-after:always;height:100vh;inset:auto}
+  #nav,#counter,#hint,#progress,#topbar{display:none}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="topbar">
+  <svg class="logo" viewBox="0 0 2406.8989 891.71891" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+      <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#003380"/><stop offset="1" stop-color="#5599ff"/>
+      </linearGradient>
+    </defs>
+    <rect x="203" y="177" width="1999" height="564" rx="40" fill="url(#lg)"/>
+    <path fill="#000000" d="m 6.1292422,893.60473 c 0,-4.4998 0.3606,-16.1137 0.8014,-25.8086 1.4176,-31.181 3.2125998,-73.91067 4.0868998,-97.28857 0.4682,-12.5182 1.3808,-35.0144 2.0281,-49.9915 0.6472,-14.9772 1.5569,-37.1076 2.0214,-49.1787 0.7944,-20.6419 2.4903,-62.8769 5.2716,-131.2786 0.6635,-16.3183 1.411,-35.1566 1.6612,-41.8628 0.2502,-6.7062 1.5296,-38.1643 2.8432,-69.9068 1.3136,-31.7426 2.9527,-72.3455 3.6426,-90.2287 0.6898,-17.8831 1.6161,-40.928 2.0585,-51.2108 0.4423,-10.2828 1.3458,-32.4132 2.0076,-49.1787 1.6252,-41.1676 2.7973,-51.3165 8.1965,-70.9691 6.9873,-25.4337 13.8514,-40.6396 28.6918,-63.5609 21.6928,-33.504905 58.110698,-63.052105 96.011798,-77.897805 18.2136,-7.1342 36.1422,-11.7928 53.4124,-13.879 9.7799,-1.1813 108.0291,-1.2969 1102.45566,-1.2969 h 1091.7189 l -0.01,7.9255 c -0.01,4.359 -0.5411,19.9966 -1.1927,34.7502 -0.6517,14.7536 -1.5686,37.4327 -2.0377,50.398005 -0.469,12.9653 -1.2108,31.8035 -1.6483,41.8628 -0.4376,10.0593 -1.1672,28.7147 -1.6212,41.4564 -1.7753,49.8131 -19.5128,495.5928 -20.3444,511.2955 -2.5987,49.0719 -17.7697,89.7949 -47.0896,126.4013 -33.3021,41.57847 -84.344,69.75317 -138.35,76.36827 -9.2537,1.1335 -120.6212,1.2609 -1102.4556,1.2609 H 6.1292422 Z M 860.45614,601.83056 v -82.9192 l 48.56521,0.2096 48.5652,0.2096 50.96645,80.8806 c 28.0315,44.4844 51.0965,81.2102 51.2555,81.6129 0.1605,0.4063 16.7318,1.0131 37.2338,1.3632 20.3196,0.3469 45.6481,0.8531 56.2856,1.1247 l 19.3407,0.494 -4.0918,-5.515 c -2.2505,-3.0332 -12.3913,-17.2203 -22.535,-31.5268 -10.1437,-14.3066 -31.1258,-43.7528 -46.6268,-65.4361 -36.9053,-51.6242 -50.501,-70.8763 -50.2068,-71.0954 0.1321,-0.098 3.1667,-1.7708 6.7433,-3.7163 25.6046,-13.9278 48.8108,-37.9573 62.3822,-64.5956 11.2461,-22.0744 15.9121,-40.6739 16.6194,-66.2489 0.6044,-21.8536 -0.9332,-33.3227 -7.2294,-53.927b -3.1558,-10.3276 -13.7684,-31.3706 -20.6606,-40.9663 -18.2558,-25.4166 -44.0319,-45.5336 -71.1582,-55.5354 l -6.4826,-2.3902 H 896.97985 764.53744 v 44.7079 44.7079 z"/>
+  </svg>
+</div>
+
+<div id="deck">
+
+  <!-- 1 · PORTADA -->
+  <section class="slide title-slide active">
+    <div class="band"></div>
+    <div class="kicker">Azua · República Dominicana · 2026</div>
+    <h1>Central CC450 MW Las Charcas</h1>
+    <p class="lead">Invirtiendo <span class="gold">US$ 1.3 millones</span> usted participa del desarrollo y la construcción de una central de ciclo combinado de <span class="hl">450 MW</span> en el nodo de Las Charcas / Km 15 del SENI.</p>
+    <div class="grid4" style="margin-top:28px">
+      <div class="kpi win"><div class="v">US$ 1.3 M</div><div class="l">capital semilla que aportan</div></div>
+      <div class="kpi"><div class="v">US$ 601 M</div><div class="l">proyecto que se desbloquea</div></div>
+      <div class="kpi"><div class="v">462 ×</div><div class="l">apalancamiento de su capital</div></div>
+      <div class="kpi"><div class="v">25.9 %</div><div class="l">TIR del equity del proyecto</div></div>
+    </div>
+    <p style="margin-top:26px;color:#9fc4e8;font-weight:600">ORGM E.I.R.L. · Tony Reyes · +1 (829) 988-3375 · tonydreyes@or-gm.com</p>
+  </section>
+
+  <!-- 2 · LA DECISIÓN -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">1 · La decisión</div>
+    <h2>Dos caminos, y solo uno tiene el proyecto listo</h2>
+    <div class="grid2">
+      <div class="card alt">
+        <h3 class="t">No invierte ahora</h3>
+        <ul style="font-size:clamp(13px,1.6vw,17px)">
+          <li>Sin licencia ambiental, sin no objeción de la ETED, sin ingeniería sellada.</li>
+          <li>Sin concesión definitiva: <b>no hay contrato EPC posible</b>, porque ningún contratista firma sin permiso de construcción.</li>
+          <li>La ventana de COD 2030 se cierra. La siguiente ventana operable cae en 2033 o después.</li>
+          <li>El nodo, el terreno y el estudio de inyección quedan disponibles para otro desarrollador.</li>
+        </ul>
+      </div>
+      <div class="card win">
+        <h3 style="color:var(--gold)">Invierte el capital semilla</h3>
+        <ul style="font-size:clamp(13px,1.6vw,17px)">
+          <li>En <b>18 meses</b>: concesión definitiva en mano con todas las licencias y no objeciones.</li>
+          <li>El proyecto pasa de prefactibilidad a <b>ready‑to‑build</b>, que es lo que exige cualquier financiador.</li>
+          <li>Usted entra <b>antes</b> de que exista el CAPEX de construcción, que es donde se decide quién participa y cómo.</li>
+          <li>Y entra con participación: como EPC, con su EPC, o como equity.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note gold"><b>El punto central:</b> el capital semilla no es una inversión en la central. Es la entrada a la <b>mesa donde se reparte el proyecto de US$ 601 millones</b>. Nadie puede comprar esa entrada más tarde.</div>
+  </section>
+
+  <!-- 3 · QUÉ COMPRA -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">2 · Qué compra</div>
+    <h2>US$ 1.3 M en permisos e ingeniería que hoy no existen</h2>
+    <p class="lead">El desembolso se hace en <span class="hl">seis tramos de US$ 200 000</span> (el último de US$ 300 000) y <span class="hl">cada uno se libera solo contra un hito verificado</span>.</p>
+    <table style="margin-top:14px">
+      <tr><th>Tramo</th><th>Hito que lo libera</th><th>Monto</th><th>Momento</th></tr>
+      <tr><td>T1</td><td>Inicio de los trabajos — firma y arranque del equipo de proyecto</td><td>US$ 200 000</td><td>M0</td></tr>
+      <tr><td>T2</td><td>Depósito de la solicitud de Licencia Ambiental</td><td>US$ 200 000</td><td>M4</td></tr>
+      <tr><td>T3</td><td>Recepción de la ingeniería aprobada del proyecto</td><td>US$ 200 000</td><td>M9</td></tr>
+      <tr><td>T4</td><td>Recepción de la carta de no objeción de interconexión (ETED)</td><td>US$ 200 000</td><td>M14</td></tr>
+      <tr><td>T5</td><td>Recepción de la ingeniería sellada de la subestación</td><td>US$ 200 000</td><td>M17</td></tr>
+      <tr class="hlrow"><td>T6</td><td>Obtención de la concesión definitiva (RTB / permiso de construcción)</td><td>US$ 300 000</td><td>M18</td></tr>
+      <tr class="hlrow"><td colspan="2">TOTAL CAPITAL SEMILLA</td><td>US$ 1 300 000</td><td>18 meses</td></tr>
+    </table>
+    <div class="note"><b>El riesgo está estructurado igual que el retorno.</b> Si el EIA no avanza, el segundo tramo no se libera. Si la ETED no emite la no objeción, el cuarto tramo no se libera. Usted no financia un plan de negocio: financia hitos.</div>
+  </section>
+
+  <!-- 4 · EL PROYECTO -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">3 · El proyecto</div>
+    <h2>450 MW brutos · 438.75 MW netos · configuración 2×1</h2>
+    <div class="cols">
+      <div class="col">
+        <table>
+          <tr><th>Concepto</th><th>Definición</th></tr>
+          <tr><td>Potencia</td><td>450 MW brutos / 438.75 MW netos</td></tr>
+          <tr><td>Configuración</td><td>2×1 — 2 turbinas de gas de 150 MW + 1 de vapor de 150 MW</td></tr>
+          <tr><td>Rendimiento</td><td>6 500 Btu/kWh</td></tr>
+          <tr><td>Refrigeración</td><td>Condensador por aire (ACC) — sin consumo de agua</td></tr>
+          <tr><td>Transmisión</td><td>SE propia 345/138 kV · GSU 170 MVA</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <table>
+          <tr><th>Concepto</th><th>Definición</th></tr>
+          <tr><td>Evacuación</td><td>Doble 138 kV reforzado, ~22 km → SE Las Charcas / Km 15</td></tr>
+          <tr><td>Terreno</td><td>30 ha central + más de 200 ha de reserva</td></tr>
+          <tr><td>Almacenamiento</td><td>BESS 45 MW / 2 h = 90 MWh</td></tr>
+          <tr><td>Operación</td><td>COD 2030 · 25 años</td></tr>
+          <tr><td>Estado</td><td>Estudio de inyección SENI completado y validado</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="note green"><b>Lo que ya está hecho antes de su primer dólar:</b> estudio de inyección al SENI 2030 con N‑1 completo, estabilidad P‑V y Q‑V, cortocircuito IEC 60909 y pérdidas; memoria técnica de la planta; mapa del sitio en formato KMZ. No partimos de cero.</div>
+  </section>
+
+  <!-- 5 · DESPLAZAMIENTO -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">4 · La pregunta que decide el negocio</div>
+    <h2>¿A quién le quitamos el mercado?</h2>
+    <p class="lead">El SRMC de Las Charcas es de <span class="hl">65.8 USD/MWh</span>. Todo lo que está por encima en el orden de mérito de 2030 es capacidad que sale del despacho.</p>
+    <div class="fig"><img src="figuras/02_orden_merito.png" alt="Orden de mérito del SENI 2030 y desplazamiento"></div>
+    <div class="grid4">
+      <div class="kpi"><div class="v">438.75 MW</div><div class="l">capacidad firme nueva</div></div>
+      <div class="kpi"><div class="v">46.2 %</div><div class="l">del parque gas legacy (950 MW)</div></div>
+      <div class="kpi"><div class="v">1.02 ×</div><div class="l">complejo Quisqueya I &amp; II</div></div>
+      <div class="kpi win"><div class="v">3.8 ×</div><div class="l">más energía que todo ese parque</div></div>
+    </div>
+  </section>
+
+  <!-- 6 · FACTOR DE PLANTA -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">5 · El motor</div>
+    <h2>Factor de planta: 68.8 % ponderado por vida</h2>
+    <div class="cols">
+      <div class="col" style="flex:1.4">
+        <table>
+          <tr><th>Año</th><th>2030</th><th>2035</th><th>2040</th><th>2045</th><th>2055</th></tr>
+          <tr><td>Factor de planta</td><td>53.7 %</td><td>59.7 %</td><td>66.2 %</td><td>72.9 %</td><td>81.2 %</td></tr>
+          <tr><td>Captura USD/MWh</td><td>67.97</td><td>72.58</td><td>79.88</td><td>91.57</td><td>121.03</td></tr>
+          <tr><td>Pico SENI MW</td><td>4 383</td><td>5 081</td><td>5 890</td><td>6 828</td><td>9 176</td></tr>
+        </table>
+        <div class="note"><b>El plan usa el promedio ponderado de todo el recorrido</b>, no el mejor año. Si el factor se quedara en 50 % con el precio de 68 USD/MWh, el modelo todavía da TIR de equity de 11.2 %. Ese es el piso del caso conservador.</div>
+      </div>
+      <div class="col">
+        <p>El modelo de despacho por orden de mérito lleva la central de <span class="hl">53.7 % en 2030</span> a <span class="hl">81.2 % en 2055</span> conforme entra la generación variable.</p>
+        <p style="margin-top:10px">La lógica es simple: <b>cuanta menos hay sol y viento, más horas necesita la térmica</b>. La CCGT no compite con el renovable — resuelve el problema que el renovable crea.</p>
+        <div class="note gold">Base del plan de negocios: <b>68.81 %</b> vida ponderado 2030–2055.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · COSTOS -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">6 · Precio de construcción</div>
+    <h2>No es una estimación: son plantas construidas en este país</h2>
+    <div class="cols">
+      <div class="col" style="flex:1.5">
+        <table>
+          <tr><th>Planta</th><th>MW</th><th>CAPEX MUSD</th><th>USD/kW</th></tr>
+          <tr><td>Manzanillo Power Land</td><td>414</td><td>950</td><td>2 295</td></tr>
+          <tr><td>Manzanillo Gas &amp; Power</td><td>430</td><td>1 000</td><td>2 326</td></tr>
+          <tr><td>Consorcio Manzanillo Energy</td><td>430</td><td>602</td><td>1 400</td></tr>
+          <tr><td>Quisqueya I &amp; II</td><td>430</td><td>700</td><td>1 628</td></tr>
+          <tr class="hlrow"><td>Las Charcas (modelo A2)</td><td>450</td><td>601</td><td>1 336</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="kpi" style="margin-bottom:10px"><div class="v">1 336 USD/kW</div><div class="l">todo incluido: planta + interconexión + owner's</div></div>
+        <p>El promedio de las cuatro referencias construidas es <span class="hl">1 912 USD/kW</span>. Las Charcas queda <b>30 % por debajo</b> del promedio.</p>
+        <p style="margin-top:8px">¿Por qué? La configuración A2 evita la línea de 55 km del escenario A3, y la refrigeración es por aire.</p>
+        <div class="note green"><b>No estamos presupuestando la planta por debajo de lo que se ha pagado en República Dominicana.</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · LAS CUATRO VÍAS -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">7 · Su participación</div>
+    <h2>Cuatro formas de entrar. Estamos abiertos a negociar.</h2>
+    <p class="lead">El capital semilla es la misma en las cuatro. Lo que cambia es <span class="hl">qué recibe usted a cambio</span>.</p>
+    <div class="grid2">
+      <div class="card win">
+        <span class="tag goldtag">A</span><h3 style="display:inline">EPCista integral</h3>
+        <p style="margin-top:8px;font-size:clamp(12px,1.55vw,16px)">Aporta el capital semilla <b>y construye</b> la central, la subestación y la línea. Captura el margen de construcción completo sobre US$ 601 millones.</p>
+      </div>
+      <div class="card win">
+        <span class="tag goldtag">B</span><h3 style="display:inline">Trae su EPC de confianza</h3>
+        <p style="margin-top:8px;font-size:clamp(12px,1.55vw,16px)">Aporta el capital semilla y <b>ORGM incorpora a su contratista</b> como ejecutor de la obra, con su relación comercial y su garantía de precio cerrado.</p>
+      </div>
+      <div class="card win">
+        <span class="tag goldtag">C</span><h3 style="display:inline">Equity de proyecto</h3>
+        <p style="margin-top:8px;font-size:clamp(12px,1.55vw,16px)">El capital semilla se capitaliza a nivel de la sociedad del proyecto. Participa del dividendo de <b>US$ 99 MUSD/año</b> y del valor de salida. US$ 1.3 M equivalen a <b>0.73 %</b> del equity de construcción.</p>
+      </div>
+      <div class="card win">
+        <span class="tag goldtag">D</span><h3 style="display:inline">Capital semilla con prima</h3>
+        <p style="margin-top:8px;font-size:clamp(12px,1.55vw,16px)">US$ 1.3 M devueltos al cierre financiero en 2028, <b>más una prima de éxito</b> por convertir un proyecto de prefactibilidad en un proyecto con concesión.</p>
+      </div>
+    </div>
+    <div class="note">También son viables las mezclas: capital semilla + equity de construcción, o capital semilla + participación en el BESS. La estructura se define con usted antes de firmar el primer tramo.</div>
+  </section>
+
+  <!-- 9 · RETORNO -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">8 · El retorno</div>
+    <h2>Lo que el capital semilla está apalancando</h2>
+    <div class="grid2">
+      <div class="col">
+        <table>
+          <tr><th>Métrica</th><th>Valor</th></tr>
+          <tr><td>TIR del proyecto</td><td>10.86 %</td></tr>
+          <tr class="hlrow"><td>TIR del equity</td><td>25.9 %</td></tr>
+          <tr class="hlrow"><td>Valor presente del equity (11 %)</td><td>US$ 223.2 MUSD</td></tr>
+          <tr><td>LCOE</td><td>99.37 USD/MWh</td></tr>
+          <tr><td>Retorno simple del equity</td><td>5.24 años</td></tr>
+          <tr><td>EBITDA año estable</td><td>US$ 99.3 MUSD</td></tr>
+          <tr><td>EBITDA acumulado 25 años</td><td>US$ 2 487 MUSD</td></tr>
+        </table>
+      </div>
+      <div class="col">
+        <div class="grid2" style="margin-top:0">
+          <div class="kpi win"><div class="v">25.9 %</div><div class="l">TIR del equity</div></div>
+          <div class="kpi win"><div class="v">223 MUSD</div><div class="l">valor presente</div></div>
+          <div class="kpi"><div class="v">5.24 años</div><div class="l">payback simple</div></div>
+          <div class="kpi"><div class="v">75.45</div><div class="l">USD/MWh precio de equilibrio</div></div>
+        </div>
+        <div class="note gold"><b>El precio de equilibrio es de 75.45 USD/MWh</b>, por debajo de la captura proyectada de 88.84 USD/MWh y muy por debajo del tope regulatorio de 141 USD/MWh (Resolución SIE-174-2025-MEM). El proyecto no necesita condiciones excepcionales para funcionar.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · FLUJO DE CAJA -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">9 · El flujo de caja</div>
+    <h2>COD 2030 · despacho permanente en el nodo de referencia</h2>
+    <div class="fig"><img src="figuras/06_flujo_caja.png" alt="Flujo de caja del proyecto 2028-2054"></div>
+    <table style="margin-top:10px">
+      <tr><th>Etapa</th><th>Años</th><th>Magnitud</th></tr>
+      <tr><td>Pre-construcción (capital semilla)</td><td>2026–2027</td><td>US$ 1.3 M · seis hitos</td></tr>
+      <tr><td>Construcción</td><td>2028–2029</td><td>US$ 590.6 MUSD (295.3/año)</td></tr>
+      <tr><td>Operación</td><td>2030–2054</td><td>EBITDA ~US$ 99 MUSD/año</td></tr>
+    </table>
+  </section>
+
+  <!-- 11 · RUTA -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">10 · El calendario</div>
+    <h2>De hoy a COD 2030</h2>
+    <div class="tl">
+      <div class="step done"><span class="y">Hecho</span>Estudio de inyección SENI<br>Memoria técnica<br>Terreno asegurado</div>
+      <div class="step seed"><span class="y">2026</span>T1 · T2<br>Arranque y solicitud de licencia ambiental</div>
+      <div class="step seed"><span class="y">2027</span>T3 · T4 · T5<br>Ingeniería aprobada, no objeción ETED, subestación sellada</div>
+      <div class="step seed"><span class="y">2028</span>T6 · Concesión definitiva<br>Cierre financiero y firma del EPC</div>
+      <div class="step"><span class="y">2029</span>Construcción<br>CAPEX US$ 295.3 MUSD</div>
+      <div class="step"><span class="y">2030</span>COD<br>Operación comercial</div>
+    </div>
+    <div class="note"><b>Sin capital semilla, el calendario se detiene en el bloque verde.</b> Todo lo que viene después depende de que alguien pague los estudios, los permisos y la ingeniería.</div>
+    <div class="rail"><div class="fill" style="width:34%"></div></div>
+  </section>
+
+  <!-- 12 · SENSIBILIDAD -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">11 · ¿Qué pasa si las suposiciones fallan?</div>
+    <h2>El proyecto no depende de un supuesto optimista</h2>
+    <div class="fig"><img src="figuras/09_sensibilidad.png" alt="Matriz de sensibilidad de la TIR del equity"></div>
+    <div class="note red"><b>El combustible pesa 64 % del LCOE</b> — esa es la variable que hay que vigilar. Con gas a 8.00 USD/MMBtu el LCOE baja a 86.09 USD/MWh; con gas a 11.00 sube a 106.09. La negociación del suministro de gas es tan importante como el CAPEX.</div>
+  </section>
+
+  <!-- 13 · BESS Y TERRITORIO -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">12 · Lo que hay alrededor</div>
+    <h2>30 ha de central y más de 200 ha de reserva</h2>
+    <div class="cols">
+      <div class="col">
+        <div class="kpi" style="margin-bottom:10px"><div class="v">45 MW / 2 h</div><div class="l">BESS de regulación de frecuencia · 90 MWh · US$ 31.5 MUSD</div></div>
+        <p>Ampliable a <span class="hl">90 MW</span> o <span class="hl">135 MW</span> sin mover una máquina de la planta. Cada escalón da más seguridad al offtaker y al inversor.</p>
+      </div>
+      <div class="col">
+        <div class="kpi" style="margin-bottom:10px"><div class="v">200+ ha</div><div class="l">reserva para centros de datos, AI hub, industria y expansión</div></div>
+        <p>Estrategia <span class="hl">energy first</span>: se instala la energía primero y la carga se conecta después. Un campus de 100 MW consume ~1.2 TWh/año — puede servirse desde aquí, con el BESS detrás.</p>
+      </div>
+    </div>
+    <div class="note gold"><b>Es la misma inversión, no tres.</b> US$ 1.3 M abren hoy la puerta a US$ 601 M después, y a un campus de datos o un AI hub mañana.</div>
+  </section>
+
+  <!-- 14 · RIESGOS -->
+  <section class="slide">
+    <div class="band"></div>
+    <div class="kicker">13 · Riesgos</div>
+    <h2>Lo que puede salir mal, y qué lo protege</h2>
+    <table>
+      <tr><th>Riesgo</th><th>Exposición</th><th>Mitigación</th></tr>
+      <tr><td>Precio del gas natural</td><td>Alto</td><td>PPA de largo plazo indexado; a 9.50 USD/MMBtu el margen es de 23 USD/MWh</td></tr>
+      <tr><td>Retraso de permisos</td><td>Medio‑Alto</td><td>Ruta SIE-064-2016-MEM con hitos pagados por tramos — el capital no avanza si el permiso no</td></tr>
+      <tr><td>Factor de planta</td><td>Medio</td><td>Base 68.8 %; el modelo resiste a 50 % con precio de 68 USD/MWh</td></tr>
+      <tr><td>Sobrecosto de construcción</td><td>Medio</td><td>CAPEX anclado a 1 250 USD/kW con referencias reales del país; contrato EPC turnkey de precio cerrado</td></tr>
+      <tr><td>No objeción ETED</td><td>Bajo‑Medio</td><td>Configuración A2 ya modelada y validada; estudio de inyección completado</td></tr>
+      <tr><td>Financiamiento de construcción</td><td>Medio</td><td>El capital semilla es el 0.216 % del CAPEX; el 99.784 % se financia con deuda (US$ 413 M) y equity (US$ 177 M)</td></tr>
+    </table>
+    <div class="note green"><b>La mitigación estructural es la misma en todos los casos:</b> los seis tramos. Su riesgo máximo es un tranche de US$ 200 000, no US$ 601 millones.</div>
+  </section>
+
+  <!-- 15 · CTA -->
+  <section class="slide title-slide">
+    <div class="band"></div>
+    <div class="kicker">Siguiente paso</div>
+    <h1>Pongamos los números sobre la mesa</h1>
+    <p class="lead">La inversión es de <span class="gold">US$ 1.3 millones</span>, se desembolsa en <span class="gold">seis tramos contra seis hitos</span>, y le abre la participación en un proyecto de <span class="gold">US$ 601 millones</span>.</p>
+    <div class="grid3" style="margin-top:26px">
+      <div class="kpi"><div class="v">1</div><div class="l">Firma de acuerdo de confidencialidad</div></div>
+      <div class="kpi"><div class="v">2</div><div class="l">Acceso al data room y visita al sitio</div></div>
+      <div class="kpi"><div class="v">3</div><div class="l">Reunión para definir su vía de participación</div></div>
+    </div>
+    <p style="margin-top:30px;font-size:clamp(18px,2.4vw,28px);color:#fff;font-weight:700">Tony Reyes · +1 (829) 988-3375 · 809-405-9420 · tonydreyes@or-gm.com</p>
+    <p style="margin-top:6px;color:#9fc4e8">ORGM E.I.R.L. · Santo Domingo, República Dominicana · Documento confidencial</p>
+    <p style="margin-top:20px;font-size:12px;color:#6b7d95;max-width:70ch">Cifras de prefactibilidad correspondientes al modelo económico del proyecto (configuración A2, mecanismo OC/IMTE 2026) y al modelo de mercado 2030–2055, construidos sobre datos del SENI y resoluciones vigentes de la SIE. Sujetas a ingeniería de detalle y acuerdos definitivos.</p>
+  </section>
+
+</div>
+
+<div id="nav"></div>
+<div id="counter"></div>
+<div id="hint">← → navega · espacio avanza</div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let idx=0;
+const nav=document.getElementById('nav');
+const prog=document.getElementById('progress');
+const counter=document.getElementById('counter');
+slides.forEach((_,i)=>{
+  const b=document.createElement('button');
+  b.title='Ir a '+(i+1);
+  b.addEventListener('click',()=>show(i));
+  nav.appendChild(b);
+});
+function show(i){
+  idx=Math.max(0,Math.min(i,slides.length-1));
+  slides.forEach((s,k)=>s.classList.toggle('active',k===idx));
+  [...nav.children].forEach((b,k)=>b.classList.toggle('on',k===idx));
+  prog.style.width=((idx)/(slides.length-1)*100)+'%';
+  counter.textContent=(idx+1)+' / '+slides.length;
+  location.hash='#'+(idx+1);
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();show(idx+1);}
+  if(e.key==='ArrowLeft'){show(idx-1);}
+  if(e.key==='Home')show(0);
+  if(e.key==='End')show(slides.length-1);
+});
+document.getElementById('deck').addEventListener('click',e=>{
+  if(e.target.closest('a'))return;
+  const w=window.innerWidth;
+  if(e.clientX>w*0.7)show(idx+1);
+  else if(e.clientX<w*0.3)show(idx-1);
+});
+const h=parseInt((location.hash||'').replace('#',''),10);
+if(h>0&&h<=slides.length)idx=h-1;
+show(idx);
+</script>
+</body>
+</html>
